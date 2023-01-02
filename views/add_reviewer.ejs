@@ -1,0 +1,15 @@
+<form action="/review/reviewer" method="POST">
+  <input
+    type="text"
+    name="reviewedEmployee"
+    value="<%= reviewUser.id %>"
+    hidden
+  />
+  <input
+    type="email"
+    placeholder="Reviewer's email"
+    name="reviewerEmail"
+    required
+  />
+  <input type="submit" value="Add Reviewer" />
+</form>

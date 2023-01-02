@@ -1,0 +1,101 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: rgb(61, 40, 142);
+  color: aliceblue;
+  display: flex;
+}
+
+header h3 {
+  width: 50%;
+  text-align: left;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+
+header ul {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+}
+
+header li,
+header a {
+  list-style: none;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 0.75rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.review-employees {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px blue solid;
+  border-radius: 2px;
+  box-shadow: 0 0 2px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-employee-row {
+  display: flex;
+  width: 95%;
+  margin: 1rem auto;
+  justify-content: space-between;
+}
+
+.review-employee-row p {
+  width: 25%;
+}
+
+.users {
+  margin: 2rem auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px blue solid;
+  border-radius: 2px;
+  box-shadow: 0 0 2px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.buttons,
+.info {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+.add-reviewer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-reviewer form input {
+  margin: 0.25rem;
+}
+
+.add {
+  width: 25%;
+  margin: auto;
+}

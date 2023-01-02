@@ -1,0 +1,99 @@
+<%if(locals.user.isAdmin){%>
+<h3>Employees to be Reviewed</h3>
+<div class="review-employees">
+  <% for(reviewUser of currentUser.reviewArray){%>
+  <div class="review-employee-row">
+    <%= reviewUser.name%>
+    <a href="/review/<%= reviewUser.id %>">Review Employee</a
+    ><a href="/admin/remove/<%= reviewUser.id%>"
+      ><img
+        src="https://cdn-icons-png.flaticon.com/512/484/484611.png"
+        alt="delete-icon"
+    /></a>
+    <div class="add-reviewer"><%- include('add_reviewer') -%></div>
+  </div>
+  <%}%>
+</div>
+
+<h3>My Performance Reviews</h3>
+<div class="review-employees">
+  <% for(review of reviews) { %>
+  <div class="review-employee-row">
+    <p><%= review.reviewedEmployee.name %></p>
+    <p><%= review.feedback %></p>
+    <p>
+      <%= review.createdAt.getDate() %> - <%= review.createdAt.getMonth() + 1 %>
+      - <%= review.createdAt.getFullYear() %> <%= review.createdAt.getHours() %>
+      : <%= review.createdAt.getMinutes() %> : <%= review.createdAt.getSeconds()
+      %>
+    </p>
+    <p><a href="/review/update/<%= review.id %>">Update Review</a></p>
+  </div>
+  <%}%>
+</div>
+
+<h3>All Employees</h3>
+<% for(let user of users){%>
+<div class="users">
+  <div class="info">
+    <p><%= user.name%></p>
+    <p><%= user.email%></p>
+
+    <p><%if(user.isAdmin){%>Admin<%}else{%>Employee<%}%></p>
+  </div>
+  <div class="buttons">
+    <% if(!locals.user.reviewArray.includes(user._id)){%>
+    <a href="/admin/addtoreview/<%= user._id %>">
+      <button>Add to Review</button></a
+    ><%}%> <% if(!user.isAdmin){ %>
+    <a href="/admin/add/<%= user._id %>"> <button>Make Admin</button></a>
+    <% }else{ %>
+    <a href="/admin/delete/<%= user._id %>"> <button>Remove Admin</button></a>
+    <%}%>
+    <a href="/user/update/<%= user.id %>"><button>Update</button></a>
+  </div>
+  <div class="reviews">
+    <% for(review of user.reviews){%>
+    <h4><%=review.feedback%></h4>
+    <p>BY: <%= review.reviewedBy.name%></p>
+    <p>
+      <%= review.createdAt.getDate() %> - <%= review.createdAt.getMonth() + 1 %>
+      - <%= review.createdAt.getFullYear() %> <%= review.createdAt.getHours() %>
+      : <%= review.createdAt.getMinutes() %> : <%= review.createdAt.getSeconds()
+      %>
+    </p>
+    <%}%>
+  </div>
+</div>
+<%}%> <%}else{%>
+<h3>Employees to be Reviewed</h3>
+<div class="review-employees">
+  <% for(reviewUser of currentUser.reviewArray){%>
+  <div class="review-employee-row">
+    <%= reviewUser.name%>
+    <a href="/review/<%= reviewUser.id %>">Review Employee</a
+    ><a href="/admin/remove/<%= reviewUser.id%>"
+      ><img
+        src="https://cdn-icons-png.flaticon.com/512/484/484611.png"
+        alt="delete-icon"
+    /></a>
+  </div>
+  <%}%>
+</div>
+<h3>My Performance Reviews</h3>
+<div class="review-employees">
+  <% for(review of reviews) { %>
+  <div class="review-employee-row">
+    <p><%= review.reviewedEmployee.name %></p>
+    <p><%= review.feedback %></p>
+    <p>
+      <%= review.createdAt.getDate() %> - <%= review.createdAt.getMonth() + 1 %>
+      - <%= review.createdAt.getFullYear() %> <%= review.createdAt.getHours() %>
+      : <%= review.createdAt.getMinutes() %> : <%= review.createdAt.getSeconds()
+      %>
+    </p>
+    <p><a href="/review/update/<%= review.id %>">Update Review</a></p>
+  </div>
+  <%}%>
+</div>
+<%}%>

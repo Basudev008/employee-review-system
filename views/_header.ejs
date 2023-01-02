@@ -1,0 +1,13 @@
+<header>
+  <h3>Employee Review System</h3>
+  <ul>
+    <% if(locals.user){ %>
+    <li><a href="/user"><%= user.name %></a></li>
+    <li><a href="/user/sign-out">Sign Out</a></li>
+    <li><a href="/user/update/<%= user.id %>">Update</a></li>
+    <% }else{%>
+    <li><a href="/user/sign-in">Sign In</a></li>
+    <li><a href="/user/sign-up">Sign Up</a></li>
+    <% }%>
+  </ul>
+</header>

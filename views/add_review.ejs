@@ -1,0 +1,15 @@
+<h3>Add Review</h3>
+<div class="add add-reviewer">
+  <%= reviewUser.name%>(<%= reviewUser.email%>)'s Review
+  <form action="/review/add" method="POST">
+    <input
+      type="text"
+      name="reviewedEmployee"
+      value="<%=reviewUser.id %>"
+      hidden
+    />
+    <input type="text" name="feedback" placeholder="feedback" required />
+    <input type="text" name="reviewedBy" value="<%= user.id %>" hidden />
+    <input type="submit" value="Submit Review" />
+  </form>
+</div>

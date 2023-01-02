@@ -1,0 +1,27 @@
+<h3>Update Review</h3>
+<div class="add add-reviewer">
+  <%= review.reviewedEmployee.name%>(<%= review.reviewedEmployee.email%>)'s
+  Review
+  <form action="/review/update-review/<%= review.id %>" method="POST">
+    <input
+      type="text"
+      name="reviewedEmployee"
+      value="<%=review.reviewedEmployee.id %>"
+      hidden
+    />
+    <input
+      type="text"
+      name="feedback"
+      placeholder="feedback"
+      value="<%= review.feedback %>"
+      required
+    />
+    <input
+      type="text"
+      name="reviewedBy"
+      value="<%= review.reviewedBy.id %>"
+      hidden
+    />
+    <input type="submit" value="Update Review" />
+  </form>
+</div>
