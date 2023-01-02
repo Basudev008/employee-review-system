@@ -29,7 +29,7 @@ app.set("views", "./views");
 // mongo store is used to store the session cookie in the db
 app.use(
   session({
-    name: "placement-cell",
+    name: "employee-review",
     secret: "backend",
     saveUninitialized: false,
     resave: false,
