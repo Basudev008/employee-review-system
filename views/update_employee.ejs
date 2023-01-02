@@ -17,6 +17,7 @@
       required
     />
   </p>
+  <% if(!locals.user.isAdmin){%>
   <p>
     <input
       type="password"
@@ -25,6 +26,7 @@
       required
     />
   </p>
+  <%}%>
   <p>
     <input type="password" name="password" placeholder="Password" required />
   </p>

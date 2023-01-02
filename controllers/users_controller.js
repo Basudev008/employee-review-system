@@ -124,7 +124,25 @@ module.exports.updatePage = async function (req, res) {
 
 // function to update details of an employee
 module.exports.updateUser = function (req, res) {
-  if (req.body.oldPassword === req.user.password) {
+  if (req.body.oldPassword) {
+    if (req.body.oldPassword === req.user.password) {
+      if (req.body.password === req.body.confirm_password) {
+        User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+          if (err) {
+            console.log("Error in updating user", err);
+            return;
+          }
+          return res.redirect("/user");
+        });
+      } else {
+        req.flash("error", "Passwords do not match");
+        return res.redirect("back");
+      }
+    } else {
+      req.flash("error", "Please enter correct old password");
+      return res.redirect("back");
+    }
+  } else {
     if (req.body.password === req.body.confirm_password) {
       User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
         if (err) {
@@ -137,8 +155,5 @@ module.exports.updateUser = function (req, res) {
       req.flash("error", "Passwords do not match");
       return res.redirect("back");
     }
-  } else {
-    req.flash("error", "Please enter correct old password");
-    return res.redirect("back");
   }
 };
